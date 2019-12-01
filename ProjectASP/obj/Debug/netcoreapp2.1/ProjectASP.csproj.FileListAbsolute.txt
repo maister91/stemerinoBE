@@ -1,0 +1,14 @@
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\bin\Debug\netcoreapp2.1\ProjectASP.deps.json
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\bin\Debug\netcoreapp2.1\ProjectASP.runtimeconfig.json
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\bin\Debug\netcoreapp2.1\ProjectASP.runtimeconfig.dev.json
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\bin\Debug\netcoreapp2.1\ProjectASP.dll
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\bin\Debug\netcoreapp2.1\ProjectASP.pdb
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.csproj.CoreCompileInputs.cache
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.RazorAssemblyInfo.cache
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.RazorAssemblyInfo.cs
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.AssemblyInfoInputs.cache
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.AssemblyInfo.cs
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.RazorTargetAssemblyInfo.cache
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.dll
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.pdb
+C:\Users\Melih\source\repos\ProjectASP\ProjectASP\obj\Debug\netcoreapp2.1\ProjectASP.csprojAssemblyReference.cache
