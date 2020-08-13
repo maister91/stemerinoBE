@@ -35,7 +35,6 @@ namespace ProjectASP.Controllers
 
 
         // GET: api/Gebruikers
-        [Authorize]
         [HttpGet]
         public IEnumerable<Gebruiker> GetGebruikers()
         {

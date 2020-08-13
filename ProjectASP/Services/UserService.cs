@@ -24,9 +24,9 @@ namespace ProjectASP.Services
         
        
 
-        public Gebruiker Authenticate(string username, string password)
+        public Gebruiker Authenticate(string gebruikersnaam, string wachtwoord)
         {
-            var gebruiker = _memberContext.Gebruikers.SingleOrDefault(x => x.Gebruikersnaam == username && x.Wachtwoord == password);
+            var gebruiker = _memberContext.Gebruikers.FirstOrDefault (x => x.Gebruikersnaam == gebruikersnaam && x.Wachtwoord == wachtwoord);
             // return null if user not found
             if (gebruiker == null)
                 return null;

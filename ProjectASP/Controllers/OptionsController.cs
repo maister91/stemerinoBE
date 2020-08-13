@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,14 +17,15 @@ namespace ProjectASP.Controllers
     public class OptionsController : ControllerBase
     {
         private readonly MemberContext _context;
+        private IHostingEnvironment _hostEnvironment;
 
-        public OptionsController(MemberContext context)
+        public OptionsController(MemberContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostingEnvironment;
         }
 
         // GET: api/Options
-        [Authorize]
         [HttpGet]
         public IEnumerable<Option> GetOptions()
         {
@@ -61,7 +64,7 @@ namespace ProjectASP.Controllers
             {
                 return BadRequest();
             }
-
+            option.Votes++;
             _context.Entry(option).State = EntityState.Modified;
 
             try
@@ -82,17 +85,58 @@ namespace ProjectASP.Controllers
 
             return NoContent();
         }
+        [HttpPost("{uploadfile}"), DisableRequestSizeLimit]
+        public ActionResult UploadFile()
+        {
+            try
+            {
+                var file = Request.Form.Files[0];
+                /*string folderName = "Upload";*/
+                string angularAssetsPath = "C:/Users/Melih/Documents/Angulare/Stemerino/src/assets/images";
+                /*string webRootPath = _hostEnvironment.WebRootPath;*/
+                /*string newPath = Path.Combine(webRootPath, folderName);*/
+                /*if (!Directory.Exists(newPath))
+                {
+                    Directory.CreateDirectory(newPath);
+                }*/
+                if (file.Length > 0)
+                {
+                    string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    string fullPath = Path.Combine(angularAssetsPath, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    return Ok(new { fullPath });
+                }
+               else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
 
         // POST: api/Options
         [HttpPost]
         public async Task<IActionResult> PostOption([FromBody] Option option)
         {
+            /*string folderName = "Upload";
+            string webRootPath = _hostEnvironment.WebRootPath;
+            string newPath = Path.Combine(webRootPath, folderName);*/
+            string imgsrcPath = "assets/images";
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Options.Add(option);
+            if (!string.IsNullOrEmpty(option.imgpath))
+        {
+                option.imgpath = option.imgpath.Replace("C:\\fakepath", imgsrcPath);
+            }
+                            _context.Options.Add(option);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOption", new { id = option.OptionID }, option);
